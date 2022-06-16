@@ -155,11 +155,11 @@ class Segment:
             # The horizontal acceleration is given by
             # μ*s*dxdtt = T2 * cos(a2) - T1 * cos(a1)
             # solved for dxdtt, we have the following:
-            self.dxdtt = (self.T2 * cos(a2) + self.T1 * cos(a1)) / (lden * self.s)
+            self.dxdtt = (self.T2 * cos(a2) - self.T1 * cos(a1)) / (lden * self.s)
 
             # the vertical acceleration is the same, except taking the sin of the angles (because sin is
             # y component) and incorporating gravity into the equation (μ*g*s)
-            self.dydtt = (self.T2 * sin(a2) + self.T1 * sin(a1) - lden * g * self.s) / (lden * self.s)
+            self.dydtt = (self.T2 * sin(a2) - self.T1 * sin(a1) - lden * g * self.s) / (lden * self.s)
 
             # for our velocity and position we will use the same incrementation corrected for time
             # from the angle
@@ -176,10 +176,10 @@ class Segment:
             # T = y(x) * sqrt( 1 + (y'(x))^2 )
             # Which can be re-written
             # T = y * sqrt(1 + (dy/dx)^2) = y * sqrt(1 + (tan(θ))^2)
-            self.T1 = self.pos1[1] * sqrt(1 + (tan(self.a)) ** 2)
-            self.T2 = self.pos2[1] * sqrt(1 + (tan(self.a)) ** 2)
+            self.T1 = self.pos1[1] * sqrt(1 + (self.dydt/self.dxdt) ** 2)
+            self.T2 = self.pos2[1] * sqrt(1 + (self.dydt/self.dxdt) ** 2)
 
-            #
+            # Limit the lines to the bounding box
             self.pos1 = ((self.pos1, (10, self.pos1[1]))[self.pos1[0] > 10], (0, self.pos1[1]))[self.pos1[0] < 0]
             self.pos2 = ((self.pos2, (10, self.pos2[1]))[self.pos2[0] > 10], (0, self.pos2[1]))[self.pos2[0] < 0]
             self.pos1 = ((self.pos1, (self.pos1[0], 10))[self.pos1[1] > 10], (self.pos1[0], 0))[self.pos1[1] < 0]
