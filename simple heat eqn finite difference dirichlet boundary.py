@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as anim
-from numpy import sin
+from numpy import sin, pi
 
 # initial conditions
 def f(x):
@@ -15,7 +15,7 @@ uf = 0
 
 x_min = 0
 x_max = 10
-x_partitions = 25
+x_partitions = 100
 nx = x_partitions-1
 
 t_min = 0
@@ -27,9 +27,9 @@ nt = t_partitions-1
 
 
 def f(x):
-    return -(1/(x_max/2))*(x-(x_max/2))**2 + (x_max/2)
+    # return -(1/(x_max/2))*(x-(x_max/2))**2 + (x_max/2)
     #return -(1/2.5)*(x-2.5)**2 + 2.5
-    #return sin(x)
+    return sin(8*pi*x/x_max)
 
 
 # arrays
@@ -80,5 +80,14 @@ def tpf():
     return 20
 
 ani = anim.FuncAnimation(fig, animate, np.arange(0,t_partitions), init_func=init, interval=tpf())
+
+
+# f = r"/Users/wardt/Desktop/3sinwaves5g.mp4"
+# writervideo = anim.FFMpegWriter(fps=(1000/tpf))
+# ani.save(f, writer=writervideo)
+
+# f = r"/Users/wardt/Documents/PycharmProjects/Research/Output/simpleheatfinitediffdirichlet-sin8pi.gif"
+# writergif = anim.PillowWriter(fps=30)
+# ani.save(f, writer=writergif)
 
 plt.show()

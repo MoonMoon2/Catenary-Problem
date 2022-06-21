@@ -86,11 +86,11 @@ class Segment:
         # The horizontal acceleration is given by
         # μ*s*dxdtt = T2 * cos(a2) - T1 * cos(a1)
         # solved for dxdtt, we have the following:
-        self.dxdtt = (self.T2 * cos(a2) + self.T1 * cos(a1)) / (lden * self.s)
+        self.dxdtt = (self.T2 * cos(a2) - self.T1 * cos(a1)) / (lden * self.s)
 
         # the vertical acceleration is the same, except taking the sin of the angles (because sin is
         # y component) and incorporating gravity into the equation (μ*g*s)
-        self.dydtt = (self.T2 * sin(a2) + self.T1 * sin(a1) - lden * g * self.s) / (lden * self.s)
+        self.dydtt = (self.T2 * sin(a2) - self.T1 * sin(a1) - lden * g * self.s) / (lden * self.s)
 
         # for our velocity and position we will use the same incrementation corrected for time
         # from the angle
@@ -137,7 +137,7 @@ g = 9.81        # acceleration due to gravity. (downwards force) Assumed positiv
 
 
 t0 = 0          # initial time (seconds)
-tf = 10         # final time (seconds)
+tf = 1         # final time (seconds)
 dt = 0.01          # size of a single partition of time
 t = np.arange(t0, tf, dt)
 '''
@@ -250,5 +250,13 @@ def init():
 ani = anim.FuncAnimation(fig, animate, len(t), init_func=init, interval=(1000*dt))
 
 
-plt.show()
+# f = r"/Users/wardt/Desktop/3sinwaves5g.mp4"
+# writervideo = anim.FFMpegWriter(fps=(1000/tpf))
+# ani.save(f, writer=writervideo)
+
+f = r"/Users/wardt/Documents/PycharmProjects/Research/Output/lagrange-v1.1.gif"
+writergif = anim.PillowWriter(fps=1)
+ani.save(f, writer=writergif)
+
+# plt.show()
 

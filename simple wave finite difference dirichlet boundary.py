@@ -9,15 +9,15 @@ uf = -10
 g = 11
 
 def f(x):           # initial positions
-    #return 1/2 * x
-    #return (x-25)**2
-    #return (1/25)*(x-25)**2-25
+    return 1/2 * x
+    # return (x-25)**2
+    # return (1/25)*(x-25)**2-25
     #return sin(4*pi*x/x_max)
     #return ((1/(x_max/uf))*x)*(1+sin(3*pi*x/x_max))
-    x = -(1/5)*x
-    for j in range(0, 25):
-        x[j] = x[j]+(sin(3*pi*x[j]/x[25]))
-    return x
+    # x = -(1/5)*x
+    # for j in range(0, 25):
+    #     x[j] = x[j]+(sin(3*pi*x[j]/x[25]))
+    # return x
 
 
 
@@ -92,9 +92,12 @@ plt.show()
 
 
 # f = r"/Users/wardt/Desktop/3sinwaves5g.mp4"
+
+
+f = r"/Users/wardt/Documents/PycharmProjects/Research/Output/simplewavefinitediffdirichlet-quadratic.gif"
+
 # writervideo = anim.FFMpegWriter(fps=(1000/tpf))
 # ani.save(f, writer=writervideo)
 
-# f = r"/Users/wardt/Desktop/animation.gif"
 # writergif = anim.PillowWriter(fps=30)
 # ani.save(f, writer=writergif)
