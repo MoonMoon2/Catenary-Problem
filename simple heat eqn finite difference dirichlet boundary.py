@@ -49,7 +49,7 @@ print(len(u[0,:]))
 
 for i in range(0, nt):
     for j in range(1, nx):
-        u[i+1, j] = ((c*dt)/(dx**2))*u[i, j+1] + (1+(2*c*dt)/(dx**2))*u[i,j] + ((c*dt)/(dx**2))*u[i, j-1]
+        u[i+1, j] = ((c*dt)/(dx**2))*u[i, j+1] + (1+(2*c*dt)/(dx**2))*u[i, j] + ((c*dt)/(dx**2))*u[i, j-1]
 
 
 fig = plt.figure()
