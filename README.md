@@ -6,7 +6,7 @@ approaches detailed here, and each file has a description of what is going on at
 ## Author
 [Tobias Ward](https://github.com/moonmoon2)
 
-## Advisers
+## Advisors
 - [Huy Nguyen](https://www.austincollege.edu/huy-nguyen/)
 - [Michael Bose](https://github.com/archangel200222)
  
