@@ -3,9 +3,6 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as anim
 from numpy import sin, pi
 
-# initial conditions
-def f(x):
-    return 2*x
 
 c = -1
 

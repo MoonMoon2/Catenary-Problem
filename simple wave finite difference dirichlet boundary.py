@@ -5,14 +5,14 @@ from numpy import pi, sin, sqrt
 
 
 u0 = 0
-uf = -10
+uf = 0
 g = 11
 
 def f(x):           # initial positions
-    return 1/2 * x
+    # return 1/2 * x
     # return (x-25)**2
     # return (1/25)*(x-25)**2-25
-    #return sin(4*pi*x/x_max)
+    return sin(pi*x/x_max)
     #return ((1/(x_max/uf))*x)*(1+sin(3*pi*x/x_max))
     # x = -(1/5)*x
     # for j in range(0, 25):
@@ -68,11 +68,11 @@ for i in range(1, nt):
 fig = plt.figure()
 #ax1 = plt.subplot(111, xlim=(x.min(), x.max()), ylim=(u[1,:].min(), u[1,:].max()))
 ax1 = plt.subplot(111, xlim=(x.min(), x.max()), ylim=(u.min(), u.max()))
-ax1.title.set_text("")
+ax1.title.set_text("1D wave equation with a single half sin wave")
 
 line1, = ax1.plot([],[],label="line")
 
-ax1.legend()
+# ax1.legend()
 
 def animate(i):
     line1.set_data(x,u[i,:])
@@ -88,16 +88,16 @@ def init():
 ani = anim.FuncAnimation(fig, animate, np.arange(0,len(u[:,0])), init_func=init, interval=tpf)
 
 
-plt.show()
+# plt.show()
 
 
 # f = r"/Users/wardt/Desktop/3sinwaves5g.mp4"
 
 
-f = r"/Users/wardt/Documents/PycharmProjects/Research/Output/simplewavefinitediffdirichlet-quadratic.gif"
+f = r"/Users/wardt/Documents/PycharmProjects/Research/Output/simplewavefinitediffdirichlet-quadratic.mp4"
 
-# writervideo = anim.FFMpegWriter(fps=(1000/tpf))
-# ani.save(f, writer=writervideo)
+writervideo = anim.FFMpegWriter(fps=30)
+ani.save(f, writer=writervideo)
 
 # writergif = anim.PillowWriter(fps=30)
 # ani.save(f, writer=writergif)
